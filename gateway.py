@@ -123,7 +123,12 @@ async def on_message(event):
         uid = kevincord.getuid()
         if message.content.startswith(f"{prefix}") and message.author_id == uid:
             command, *args = shlex.split(message.content[1:])
-            #this is where you declare your commands     
+            #this is where you declare your commands
+            uid = kevincord.getuid()
+            chid = message.channel_id 
+            if command == "ping":
+                kevincord.send_message("pong", chid)
+            
     except KeyError:
         print("Invalid message format")
 
